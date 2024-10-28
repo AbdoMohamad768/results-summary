@@ -1,0 +1,260 @@
+// Colors
+$light-red: hsl(0, 100%, 67%);
+$orangey-yellow: hsl(39, 100%, 56%);
+$green-teal: hsl(166, 100%, 37%);
+$cobalt-blue: hsl(234, 85%, 45%);
+
+// Gradients
+//// background
+$light-slate-blue: hsl(252, 100%, 67%);
+$light-royal-blue: hsl(241, 81%, 54%);
+//// circle
+$violet-blue: hsla(256, 72%, 46%, 1);
+$persian-blue: hsla(241, 72%, 46%, 0);
+
+// Neutral
+$white: hsl(0, 0%, 100%);
+$pale-blue: hsl(221, 100%, 96%);
+$light-lavender: hsl(241, 100%, 89%);
+$dark-gray-blue: hsl(224, 30%, 27%);
+
+// Body Copy
+$main-font-size: 18px;
+
+%center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+%rounded {
+  border-radius: 30px;
+}
+%circle {
+  border-radius: 50%;
+}
+
+@mixin breakPoints($point) {
+  @if $point == mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $point == large {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+body {
+  font-family: "Hanken Grotesk", sans-serif;
+  background-color: $white;
+  height: 100vh;
+  @extend %center;
+}
+
+article {
+  box-shadow: 20px 20px 50px 8px hsla(234, 85%, 45%, 0.05);
+  width: 730px;
+  height: 530px;
+  display: flex;
+  @extend %rounded;
+
+  @include breakPoints(mobile) {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 800px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+
+  section {
+    flex-basis: 50%;
+    padding: 40px;
+
+    &.result {
+      @include breakPoints(mobile) {
+        flex-basis: 40%;
+        padding: 20px 40px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+      }
+    }
+    &.summary {
+      @include breakPoints(mobile) {
+        flex-basis: 60%;
+        padding: 20px;
+      }
+    }
+  }
+}
+
+.result {
+  background-image: linear-gradient(
+    to top,
+    $light-royal-blue 20%,
+    $light-slate-blue
+  );
+  @extend %rounded;
+
+  h1:first-of-type,
+  h1:last-of-type {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  h1:first-of-type {
+    color: $light-lavender;
+    margin-bottom: 30px;
+  }
+  h1:last-of-type {
+    color: $white;
+    margin-bottom: 20px;
+    @include breakPoints(mobile) {
+      margin-bottom: 10px;
+    }
+  }
+
+  p:first-of-type {
+    height: 200px;
+    width: 200px;
+    margin: 0 auto 30px;
+    @extend %circle;
+    @extend %center;
+    flex-direction: column;
+    font-weight: bold;
+    background-image: linear-gradient(to top, $persian-blue, $violet-blue);
+    span:first-child {
+      font-size: 70px;
+      color: $white;
+      @include breakPoints(mobile) {
+        font-size: 60px;
+      }
+    }
+    span:last-child {
+      color: hsla(222, 100%, 96%, 0.4);
+    }
+
+    @include breakPoints(mobile) {
+      width: 160px;
+      height: 160px;
+    }
+  }
+
+  p:last-of-type {
+    color: $light-lavender;
+    text-align: center;
+    line-height: 1.5;
+    @include breakPoints(mobile) {
+      font-size: 14px;
+    }
+  }
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h1 {
+    font-size: 23px;
+    color: $dark-gray-blue;
+    @include breakPoints(mobile) {
+      font-size: $main-font-size;
+    }
+  }
+
+  ul {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    li {
+      width: 100%;
+      padding: 15px;
+      &:not(:last-child) {
+        margin-bottom: 20px;
+        @include breakPoints(mobile) {
+          margin-bottom: 15px;
+        }
+      }
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: $main-font-size;
+      font-weight: 600;
+      border-radius: 10px;
+
+      @include breakPoints(mobile) {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      &:nth-child(1) {
+        color: $light-red;
+        background-color: hsla(0, 100%, 67%, 0.1);
+      }
+      &:nth-child(2) {
+        color: $orangey-yellow;
+        background-color: hsl(39, 100%, 56%, 0.1);
+      }
+      &:nth-child(3) {
+        color: $green-teal;
+        background-color: hsl(166, 100%, 37%, 0.1);
+      }
+      &:nth-child(4) {
+        color: $cobalt-blue;
+        background-color: hsl(234, 85%, 45%, 0.1);
+      }
+
+      .test-category img {
+        // display: flex;
+        align-self: center;
+        img {
+          margin-right: 10px;
+        }
+      }
+
+      .test-score {
+        color: $dark-gray-blue;
+        font-size: 16px;
+        font-weight: 700;
+
+        span {
+          color: hsl(224, 30%, 27%, 0.5);
+        }
+      }
+    }
+  }
+
+  button {
+    padding: 18px;
+    font-size: $main-font-size;
+    border-radius: 30px;
+    background-color: $dark-gray-blue;
+    color: $white;
+    cursor: pointer;
+
+    &:hover {
+      background-image: linear-gradient(
+        to top,
+        $light-royal-blue,
+        $light-slate-blue
+      );
+    }
+  }
+}
