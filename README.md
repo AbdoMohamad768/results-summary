@@ -24,8 +24,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [solution](https://your-solution-url.com)
-- Live Site URL: [results-summary-abdomohamad.app](https://your-live-site-url.com)
+- Solution URL: [solution](https://www.frontendmentor.io/solutions/responsive-reesults-component-VT3eR1F6EM)
+- Live Site URL: [results-summary-abdomohamad.app](https://results-summary-abdomohamad.netlify.app)
 
 ## My process
 
