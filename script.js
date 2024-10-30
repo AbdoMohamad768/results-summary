@@ -26,4 +26,7 @@ fetch("./data.json")
     });
 
     result_label.textContent = Math.floor(totalScore / data.length);
+  })
+  .catch(err => {
+    console.error(err);
   });
