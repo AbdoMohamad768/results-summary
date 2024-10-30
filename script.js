@@ -1,7 +1,9 @@
+"use strict";
+
 const result_label = document.querySelector(".final-result");
 const summaryList = document.querySelector(".summary ul");
 
-fetch("./data.json")
+fetch("/data.json")
   .then((res) => {
     console.log(res);
     return res.json();
