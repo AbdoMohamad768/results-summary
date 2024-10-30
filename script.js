@@ -2,7 +2,10 @@ const result_label = document.querySelector(".final-result");
 const summaryList = document.querySelector(".summary ul");
 
 fetch("./data.json")
-  .then((res) => res.json())
+  .then((res) => {
+    console.log(res);
+    return res.json();
+  })
   .then((data) => {
     let totalScore = 0;
 
