@@ -1,8 +1,13 @@
+"use strict";
+
 const result_label = document.querySelector(".final-result");
 const summaryList = document.querySelector(".summary ul");
 
-fetch("./data.json")
-  .then((res) => res.json())
+fetch("/data.json")
+  .then((res) => {
+    console.log(res);
+    return res.json();
+  })
   .then((data) => {
     let totalScore = 0;
 
@@ -23,4 +28,7 @@ fetch("./data.json")
     });
 
     result_label.textContent = Math.floor(totalScore / data.length);
+  })
+  .catch((err) => {
+    console.error(err);
   });
